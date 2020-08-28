@@ -1,0 +1,69 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+
+
+<div class="container">
+    <a href="logout/">Logout</a> || <a href="newticket/">New Ticket</a><br>
+    New Tickets:
+    <ul>
+        {% for ticket in new_tickets %}
+            <li>
+                    Title: <a href="/ticket/{{ticket.id}}/">{{ticket.title}}</a><br>
+                    Description: {{ticket.description}}<br>
+                    Filed By: <a href="/user/{{user.id}}/">{{ticket.filed_by}}</a><br>
+                    Date/Time Filed: {{ticket.date_time}}<br>
+                    Assigned To: {{ticket.assigned_to}}<br>
+                    Completed By: {{ticket.completed_by}}<br>
+                    Ticket Status: {{ticket.ticket_status}}
+
+            </li>
+        {% endfor %}
+    </ul>
+    Tickets in Progress:
+    <ul>
+        {% for ticket in in_progress_tickets %}
+            <li>
+                    Title: <a href="/ticket/{{ticket.id}}/">{{ticket.title}}</a><br>
+                    Description: {{ticket.description}}<br>
+                    Filed By: <a href="/user/{{user.id}}/">{{ticket.filed_by}}</a><br>
+                    Date/Time Filed: {{ticket.date_time}}<br>
+                    Assigned To: <a href="/user/{{user.id}}/">{{ticket.assigned_to}}</a><br>
+                    Completed By: {{ticket.completed_by}}<br>
+                    Ticket Status: {{ticket.ticket_status}}
+            </li>
+        {% endfor %}
+    </ul>
+    Tickets Completed:
+    <ul>
+        {% for ticket in completed_tickets %}
+            <li>
+                    Title: <a href="/ticket/{{ticket.id}}/">{{ticket.title}}</a><br>
+                    Description: {{ticket.description}}<br>
+                    Filed By: <a href="/user/{{user.id}}/">{{ticket.filed_by}}</a><br>
+                    Date/Time Filed: {{ticket.date_time}}<br>
+                    Assigned To: {{ticket.assigned_to}}<br>
+                    Completed By: <a href="/user/{{user.id}}/">{{ticket.completed_by}}</a><br>
+                    Ticket Status: {{ticket.ticket_status}}
+            </li>
+        {% endfor %}
+    </ul>
+    Invalid Tickets:
+    <ul>
+        {% for ticket in invalid_tickets %}
+            <li>
+                    Title: <a href="/ticket/{{ticket.id}}/">{{ticket.title}}</a><br>
+                    Description: {{ticket.description}}<br>
+                    Filed By: {{ticket.filed_by}}<br>
+                    Date/Time Filed: {{ticket.date_time}}<br>
+                    Assigned To: {{ticket.assigned_to}}<br>
+                    Completed By: {{ticket.completed_by}}<br>
+                    Ticket Status: {{ticket.ticket_status}}
+
+            </li>
+        {% endfor %}
+    </ul>
+
+<p>Status Codes: N=New, P=In Progress, C=Complete, I=Invalid</p>
+
+</div>
